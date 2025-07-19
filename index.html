@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Fullscreen Test</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      body {
-        margin: 0;
-        background: #111;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        flex-direction: column;
-        font-family: sans-serif;
-      }
-      button {
-        padding: 1rem 2rem;
-        font-size: 1.2rem;
-        margin-top: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Attempting Fullscreen...</h1>
-    <button onclick="enterFullscreen()">Click to Enter Fullscreen</button>
+<head>
+  <title>Tap to Enter Fullscreen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      font-family: sans-serif;
+    }
+    button {
+      background: #1e90ff;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:active {
+      background: #0d74d1;
+    }
+  </style>
+</head>
+<body>
+  <h2>Tap to Enter Fullscreen</h2>
+  <button onclick="goFullscreen()">Enter Fullscreen</button>
 
-    <script>
-      function enterFullscreen() {
-        const el = document.documentElement;
-        if (el.requestFullscreen) {
-          el.requestFullscreen();
-        } else if (el.webkitRequestFullscreen) {
-          el.webkitRequestFullscreen(); // Safari
-        } else if (el.msRequestFullscreen) {
-          el.msRequestFullscreen(); // IE11
-        }
+  <script>
+    function goFullscreen() {
+      const el = document.documentElement;
+      if (el.requestFullscreen) {
+        el.requestFullscreen();
+      } else if (el.webkitRequestFullscreen) {
+        el.webkitRequestFullscreen(); // Safari
+      } else if (el.msRequestFullscreen) {
+        el.msRequestFullscreen(); // IE
       }
-
-      // Try to request fullscreen on load (will likely be blocked)
-      window.onload = function () {
-        enterFullscreen();
-      };
-    </script>
-  </body>
+    }
+  </script>
+</body>
 </html>
